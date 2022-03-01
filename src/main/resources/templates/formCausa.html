@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="/layout/layout :: head">
+
+
+</head>
+<header th:replace="/layout/layout :: header"></header>
+
+<div class="container py-5">
+  <div class="card bg-light border-4">
+    <div class="card-header" th:text="${titulo}"></div>
+    <!-- <div class="col-sm-36 offset-sm-2 text-center"> -->
+
+    <div class="card-body">
+      <div th:object="${causa}" th:remove="tag">
+        <ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+          <li th:text="'Por favor, verifique los campos, se han encontrado errores.'"></li>
+        </ul>
+      </div>
+
+      <form th:action="@{/formCausa}" th:object="${causa}" method="post">
+
+        <label>Numero de expediente:</label>
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <input  oninput="this.value=this.value.slice(0,this.maxLength)" maxlength="14" type="text" th:field="*{numExpediente}" class="form-control" placeholder="Numero de expediente"
+                   th:errorclass="'form-control alert-danger'">
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('numExpediente')}"
+                   th:errors="*{numExpediente}"></small>
+          </div>
+        </div>
+        <label>Victima:</label>
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <input type="text"  th:field="*{victima}" class="form-control" placeholder="Victima"
+                   th:errorclass="'form-control alert-danger'"
+                   onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"/>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('victima')}"
+                   th:errors="*{victima}"></small>
+          </div>
+        </div>
+        <label>Victimario</label>
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <input   type="text" th:field="*{victimario}" class="form-control"
+                     th:errorclass="'form-control alert-danger'" placeholder="Ingrese dependencia de restaciones"/>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('victimario')}"
+                   th:errors="*{victimario}"></small>
+          </div>
+        </div>
+
+        <label>Descripción:</label>
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <textarea th:field="*{contexto}" class="form-control"
+                      th:errorclass="'form-control alert-danger'" placeholder="Ingrese descripcion"></textarea>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('contexto')}"
+                   th:errors="*{contexto}"></small>
+          </div>
+        </div>
+
+        <label>Fecha: </label>
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <input   type="text" th:field="*{fecha2}" class="form-control"
+                     th:errorclass="'form-control alert-danger'" placeholder="dd/MM/yyyy"/>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('fecha2')}"
+                   th:errors="*{fecha2}"></small>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <input type="submit" th:value="${mensaje}" class="btn btn-primary"/>
+            <h4 class="card-title">
+              <a class="btn btn-primary btnRegresarCausa " th:href="@{/causas}">Regresar</a>
+            </h4>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<footer th:replace="/layout/layout :: footer"></footer>
+
+</html>

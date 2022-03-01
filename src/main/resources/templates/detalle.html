@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="/layout/layout :: head">
+
+
+</head>
+<header th:replace="/layout/layout :: header"></header>
+
+<div class="container py-5">
+  <div class="card bg-light border-4">
+    <div class="card-header" th:text="${titulo}"></div>
+    <div class="card-body">
+      <h4 class="card-title">
+        <a th:href="@{/causas}" class="btn btn-light btn-xs">&laquo;
+          volver</a>
+      </h4>
+      <form th:action="@{/detalle}" th:object="${causa}" method="post">
+        <ul class="list-group my-2">
+          <li class="list-group-item list-group-item-primary" th:text="'Datos de la causa'"></li>
+          <li class="list-group-item" th:text="'Numero de expediente: '+ ${causa.getNumExpediente()}"></li>
+          <li class="list-group-item" th:text="'Fecha: '+ ${#calendars.format(causa.getFecha2(),'dd/MM/yyyy')}"></li>
+          <li class="list-group-item" th:text="'Victima: '+ ${causa.getVictima()}"></li>
+          <li class="list-group-item" th:text="'Victimario: '+ ${causa.getVictimario()}"></li>
+        </ul>
+        <label>Descripción:</label>
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <textarea th:field="*{contexto}" class="form-control"
+                      th:errorclass="'form-control alert-danger'" placeholder="Ingrese descripcion"></textarea>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('contexto')}"
+                   th:errors="*{contexto}"></small>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <input type="submit" th:value="${mensaje}" class="btn btn-primary"/>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer th:replace="/layout/layout :: footer"></footer>
+
+</html>

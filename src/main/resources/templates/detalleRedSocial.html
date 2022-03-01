@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="/layout/layout :: head">
+
+
+</head>
+<header th:replace="/layout/layout :: header"></header>
+
+<div class="container py-5">
+    <div class="card bg-light border-4">
+        <h4>Red Social</h4>
+        <div class="card-body">
+            <h4 class="card-title">
+                <a th:href="@{/causas}" class="btn btn-light btn-xs">
+                    Regresar</a>&laquo;
+            </h4>
+
+
+
+            <form th:action="@{/detalleRedSocial}" th:object="${redSocial}" method="post">
+                <ul class="list-group my-2">
+                    <li class="list-group-item list-group-item-primary" th:text="'Datos'"></li>
+                    <li class="list-group-item" th:text="'Tipo de red: '+ ${redSocial.getTipo()}"></li>
+                    <li class="list-group-item" th:text="'Perfil de la red: '+ ${redSocial.getPerfil()}"></li>
+
+                </ul>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="/layout/layout :: footer"></footer>
+
+</html>

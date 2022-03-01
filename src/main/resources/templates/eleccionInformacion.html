@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="/layout/layout :: head">
+    <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<header th:replace="/layout/layout :: header"></header>
+
+<link rel="stylesheet" href="../css/styleMenuInformacion.css"/>
+
+<body>
+<!--   Tarjetas-->
+<div class="title-cards">
+    <h2>Seleccion de informacion</h2>
+</div>
+<div class="container-card">
+
+    <div class="card">
+        <figure>
+            <img src="https://www.oficinalegaldeaccidentes.com/wp-content/uploads/2020/12/If-You-Receive-This-Phone-Call-After-a-Car-Accident-You-Must-Ignore-It-1024x683.jpg">
+        </figure>
+        <div class="contenido-card">
+            <h3>Llamada Telefonica</h3>
+            <p>Texto a completar</p>
+            <a class="btn btn-outline-primary btn-xs" th:href="@{/formLLamadaTelefonica/}">LLamada telefonica</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <figure>
+            <img src="http://blog.microwd.es/wp-content/uploads/2016/02/banco.jpg">
+        </figure>
+        <div class="contenido-card">
+            <h3>Movimiento Bancario</h3>
+            <p>Texto a completar</p>
+            <a class="btn btn-outline-primary btn-xs" th:href="@{/formMovimientoBancario/}">Movimiento bancario</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <figure>
+            <img src="https://cdn-e360.s3-sa-east-1.amazonaws.com/redes-sociales-para-empresas-large-JKGhYjKMCp.png">
+        </figure>
+        <div class="contenido-card">
+            <h3>Red Social</h3>
+            <p>Texto a completar</p>
+            <a class="btn btn-outline-primary btn-xs" th:href="@{/formRedSocial/}">Red social</a>
+        </div>
+    </div>
+</div>
+<!--Fin   Tarjetas-->
+</body>
+
+
+
+<footer th:replace="/layout/layout :: footer">
+
+
+</footer>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="/layout/layout :: head">
+
+
+</head>
+<header th:replace="/layout/layout :: header"></header>
+
+<div class="container py-5">
+    <div class="card bg-light border-4">
+        <h4>Llamada Telefonica</h4>
+        <div class="card-body">
+            <h4 class="card-title">
+                <a th:href="@{/causas}" class="btn btn-light btn-xs">
+                    Regresar</a>&laquo;
+            </h4>
+
+
+
+            <form th:action="@{/detalleLlamadaT}" th:object="${llamadaT}" method="post">
+                <ul class="list-group my-2">
+                    <li class="list-group-item list-group-item-primary" th:text="'Datos'"></li>
+                    <li class="list-group-item" th:text="'Numero del receptor: '+ ${llamadaT.getNumeroReceptor()}"></li>
+                    <li class="list-group-item" th:text="'Numero del emisor: '+ ${llamadaT.getNumeroEmisor()}"></li>
+                    <li class="list-group-item" th:text="'Tiempo de duracion (en minutos): '+ ${llamadaT.getDuracion()}"></li>
+
+                </ul>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="/layout/layout :: footer"></footer>
+
+</html>

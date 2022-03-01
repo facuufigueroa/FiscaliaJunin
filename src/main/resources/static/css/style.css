@@ -1,0 +1,133 @@
+.email{
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 17px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+
+}
+
+.formgroup{
+    margin-left: auto !important;
+    padding-right: 20rem !important;
+    padding-left: 20rem !important;
+
+
+}
+
+.cc{
+    /*margin-left: 10rem!important;*/
+    margin:auto;
+
+    margin-block-end: 2rem;
+}
+
+.table {
+    border-spacing: 15px;
+    text-align: center !important;
+}
+
+
+body{
+     background: #274E6C;
+
+}
+
+.cardL{
+    padding-block-end: 1rem;
+    margin-left: 20px;
+    margin-top:20px;
+    margin-right: 15px;
+}
+
+.card2{
+    margin-left: 5rem;
+
+}
+
+.img{
+    background-image: url("https://fondosmil.com/fondo/72669.jpg");
+    height: 900px;
+    width: 1800px;
+}
+
+
+.btnCreateUser{
+   margin-block-end: 10px;
+
+}
+
+.border-4{
+    border-width: 4px;
+}
+
+.cardMenuSeleccionInf{
+    margin-left: 20px;
+}
+
+.buscarVictima{
+    padding-left: 0px;
+}
+
+.buscarVictimario{
+
+    margin-top:8px;
+    max-width: 300%;
+}
+
+
+.inputBuscarCausa{
+    margin-left:5px;
+
+}
+
+.btns{
+    margin-left: 5px;
+}
+
+.inputsBuscarVictima{
+    margin-top:8px;
+    max-width: 300%;
+}
+
+.btnRegresarCausa{
+    margin-top:5px;
+}
+
+.col {
+    display: inline-block;
+}
+
+.contenedor{
+    background-color:#CCC;
+    width:100%;
+
+    display:flex;
+    justify-content: space-between;
+}
+.contenido{
+     height:40px;
+     width:10%;
+     float:left;
+     margin: 10px;
+ }
+
+.infocausa{
+    width: 100%;
+}
+
+.informaciones{
+
+    padding-top: 0rem!important;
+}
+
+.fa-solid{
+   font-size: 20px;
+}
+
+
+
+
+

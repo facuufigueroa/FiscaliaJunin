@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="/layout/layout :: head"></head>
+<body>
+
+<header th:replace="/layout/layout :: header"></header>
+
+
+<div class="container py-5">
+    <div class="card bg-light border-4">
+        <div class="card-header" th:text="${titulo}"></div>
+        <!-- <div class="col-sm-36 offset-sm-2 text-center"> -->
+
+        <div class="card-body">
+            <div th:object="${llamadaTelefonica}" th:remove="tag">
+                <ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                    <li th:text="'Por favor, verifique los campos, se han encontrado errores.'"></li>
+                </ul>
+            </div>
+
+            <form th:action="@{/formLLamadaTelefonica}" th:object="${llamadaTelefonica}" method="post">
+
+                <label>Numero de origen:</label>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <input  oninput="this.value=this.value.slice(0,this.maxLength)" maxlength="10" type="number" th:field="*{numeroEmisor}" class="form-control" placeholder="Numero de origen"
+                                th:errorclass="'form-control alert-danger'">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('numeroEmisor')}"
+                               th:errors="*{numeroEmisor}"></small>
+                    </div>
+                </div>
+                <label>Numero de destino:</label>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <input  oninput="this.value=this.value.slice(0,this.maxLength)" maxlength="10" type="number" th:field="*{numeroReceptor}" class="form-control" placeholder="Numero de destino"
+                                th:errorclass="'form-control alert-danger'">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('numeroReceptor')}"
+                               th:errors="*{numeroReceptor}"></small>
+                    </div>
+                </div>
+                <label>Duracion: </label>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <input  oninput="this.value=this.value.slice(0,this.maxLength)" maxlength="9"  type="number" th:field="*{duracion}" class="form-control"
+                                th:errorclass="'form-control alert-danger'" placeholder="Ingrese duracion en minutos"/>
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('duracion')}"
+                               th:errors="*{duracion}"></small>
+                    </div>
+                </div>
+
+                <label>Descripción: </label>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                <textarea th:field="*{descripcion}" class="form-control"
+                          th:errorclass="'form-control alert-danger'" placeholder="Ingrese descripcion"></textarea>
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('descripcion')}"
+                               th:errors="*{descripcion}"></small>
+                    </div>
+                </div>
+
+                <label>Fecha: </label>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <input   type="text" th:field="*{fecha}" class="form-control"
+                                 th:errorclass="'form-control alert-danger'" placeholder="dd/MM/yyyy"/>
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('fecha')}"
+                               th:errors="*{fecha}"></small>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <input type="submit" th:value="${mensaje}" class="btn btn-primary"/>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="/layout/layout :: footer"></footer>
+
+
+</body>
+</html>

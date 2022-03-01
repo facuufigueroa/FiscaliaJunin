@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/layout/layout :: head" >
+    <link rel="stylesheet" href="../static/css/style.css"/>
+</head>
+
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title th:text="'Fiscalia'"></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+</head>
+
+
+
+<header th:fragment="header">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Fiscalia</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/users}">Usuarios <span class="sr-only"></span></a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item active">
+                    <a class="nav-link" th:href="@{/causas}">Causas<span class="sr-only"></span></a>
+                </li>
+
+            </ul>
+        </div>
+        <ul class="navbar-nav navbar-right">
+
+            <li sec:authorize="isAuthenticated()" class="email" >
+                <a><label   id="usuario"  th:text="${#httpServletRequest.getRemoteUser()}" > </label></a>
+            </li>
+            <li sec:authorize="!isAuthenticated()"><a class="btn btn-outline-primary" th:href="@{/login}">Iniciar
+                sesión</a></li>
+            <li sec:authorize="isAuthenticated()">
+                <form id="logoutForm" th:action="@{/logout}" method="post">
+                    <button class="btn btn-outline-primary" onclick="document.getElementById('logoutForm').submit();" type="submit">Cerrar sesión</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+
+
+    <div th:if="${success != null}" class="alert alert-success alert-dismissible fade show">
+        <button class="close" data-dismiss="alert"><span>&times;</span></button>
+        <div th:text="${success}"></div>
+    </div>
+    <div th:if="${warning != null}" class="alert alert-warning alert-dismissible fade show">
+        <button class="close" data-dismiss="alert"><span>&times;</span></button>
+        <div th:text="${warning}"></div>
+    </div>
+    <div  th:if="${danger != null}" class="alert alert-danger alert-dismissible fade show">
+        <button class="close" data-dismiss="alert"><span>&times;</span></button>
+        <div th:text="${danger}"></div>
+    </div>
+    <div  th:if="${info != null}" class="alert alert-info alert-dismissible fade show">
+        <button class="close" data-dismiss="alert"><span>&times;</span></button>
+        <div th:text="${info}"></div>
+    </div>
+</header>
+
+<footer th:fragment="footer" >
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+</footer>
+
+
+</html>
+
+
+
+<link rel="stylesheet" href="../static/css/style.css"/>
+
+<div class="container formgroup py-4">
+    <div class="card border-primary text-center">
+        <div class="card-header">Iniciar Sesion</div>
+        <div class="card-body"></div>
+        <form th:action="@{/login}" method="post">
+
+            <div class="form-group cc col-sm-6">
+                <input  type="text" name="username" id="username"  class="form-control" placeholder="Username" autofocus required/>
+            </div>
+
+            <div class="form-group cc col-sm-6">
+                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required/>
+            </div>
+
+            <div class="form-group cc col-sm-6">
+                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Iniciar Sesion"/>
+
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+<!--footer th:replace="/layout/layout :: footer"></footer-->
+
+
+</html>
