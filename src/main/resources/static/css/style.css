@@ -13,7 +13,7 @@
     margin-left: auto !important;
     padding-right: 20rem !important;
     padding-left: 20rem !important;
-
+    margin-top: 200px;
 
 }
 
@@ -31,8 +31,12 @@
 
 
 body{
-     background: #274E6C;
+   background: #152c3d;
 
+}
+
+.colorNavBar{
+    background-color: #212428!important;
 }
 
 .cardL{
@@ -101,7 +105,7 @@ body{
 }
 
 .contenedor{
-    background-color:#CCC;
+
     width:100%;
 
     display:flex;
@@ -109,7 +113,7 @@ body{
 }
 .contenido{
      height:40px;
-     width:10%;
+     width:15%;
      float:left;
      margin: 10px;
  }
@@ -127,7 +131,25 @@ body{
    font-size: 20px;
 }
 
+.btnAgregarFormI{
+    margin-left: 0.78rem;
+}
 
+.containerBtnFormI{
+    padding-left: 0px;
+}
 
+.fontTitles{
+    font-family: "Verdana Black";
+   /* font-style: oblique;*/
+    font-size: 1.5rem;
+}
 
-
+.btnPdf{
+    height:40px;
+    width:5%;
+    float:left;
+    margin: 10px;
+    background-color: #800c0c;
+    border-bottom-color: #800c0c;
+}

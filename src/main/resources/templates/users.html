@@ -22,7 +22,7 @@
     <div class="card-body">
       <div class="row">
         <div class="col-sm-8">
-          <a class="btn btn-primary btnCreateUser" sec:authorize="!isAuthenticated()" th:href="@{/form}" role="button">Crear Usuario</a>
+          <a class="btn btn-primary btnCreateUser" sec:authorize="isAuthenticated()" th:href="@{/form}" role="button"><i class="fa-solid fa-user-plus"></i>  Crear Usuario</a>
 
         </div>
       </div>

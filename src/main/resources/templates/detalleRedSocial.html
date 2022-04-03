@@ -11,8 +11,9 @@
         <h4>Red Social</h4>
         <div class="card-body">
             <h4 class="card-title">
-                <a th:href="@{/causas}" class="btn btn-light btn-xs">
-                    Regresar</a>&laquo;
+                <a th:href="@{/formHistorialCausa/}+${redSocial.causa.id}" class="btn btn-light btn-xs">
+                    <i class="fa-solid fa-backward"></i>
+                    Regresar</a>
             </h4>
 
 
@@ -29,6 +30,10 @@
         </div>
     </div>
 </div>
+
+
+
+
 
 <footer th:replace="/layout/layout :: footer"></footer>
 

@@ -8,5 +8,6 @@ public interface IredSocialService {
 
     public void save(RedSocial redSocial);
     public RedSocial findById(Long id);
+    public void delete(Long id);
 
 }

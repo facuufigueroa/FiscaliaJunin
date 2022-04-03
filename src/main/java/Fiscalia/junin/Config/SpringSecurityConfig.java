@@ -25,6 +25,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService);
     }
 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -34,10 +35,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/detalle/**").hasAnyRole("USER")
                 .antMatchers("/editar/**").hasAnyRole("USER")
                 .antMatchers("/eliminar/**").hasAnyRole("USER")
+                .antMatchers("/formInformacion/**").hasAnyRole("USER")
+                .antMatchers("/formHistorialCausa/**").hasAnyRole("USER")
+                .antMatchers("/users/**").hasAnyRole("USER")
                 .and()
                 .formLogin().loginPage("/login")
                 .permitAll()
-                .defaultSuccessUrl("/users", true)
+                .defaultSuccessUrl("/causas", true)
                 .and()
                 .logout().permitAll();
 

@@ -7,4 +7,5 @@ public interface ImovimientoBancarioService {
 
     public void save(MovimientoBancario movimientoBancario);
     public MovimientoBancario findById(Long id);
+    public void delete(Long id);
 }

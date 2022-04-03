@@ -15,5 +15,4 @@ public interface ICausaService{
     public List<Causa> findByVictimario(String victimario);
     public List<Causa> findByNumExpediente(String numExpediente);
 
-
 }
