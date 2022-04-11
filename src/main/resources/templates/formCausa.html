@@ -39,11 +39,11 @@
                    th:errors="*{victima}"></small>
           </div>
         </div>
-        <label>Victimario</label>
+        <label>Imputado:</label>
         <div class="form-group row">
           <div class="col-sm-6">
             <input   type="text" th:field="*{victimario}" class="form-control"
-                     th:errorclass="'form-control alert-danger'" placeholder="Ingrese dependencia de restaciones"/>
+                     th:errorclass="'form-control alert-danger'" placeholder="Imputado"/>
             <small class="form-text text-danger" th:if="${#fields.hasErrors('victimario')}"
                    th:errors="*{victimario}"></small>
           </div>

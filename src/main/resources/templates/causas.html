@@ -76,7 +76,7 @@
                     <th>Numero</th>
                     <th>Fecha</th>
                     <th>Victima</th>
-                    <th>Victimario</th>
+                    <th>Imputado</th>
                     <th>Acciones</th>
                     <th>Agregar informacion</th>
                     <th>Ver detalles</th>
@@ -91,7 +91,7 @@
                     <td th:text="${causa.getVictima()}"></td>
                     <td th:text="${causa.getVictimario()}"></td>
                     <td>
-                        <a class="btn btn-outline-primary btn-xs" th:href="@{/detalle/}+${causa.id}"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a class="btn btn-outline-primary btn-xs" th:href="@{/edit/}+${causa.id}"><i class="fa-solid fa-pen-to-square"></i></a>
 
                         <a class="btn btn-outline-danger btn-xs" th:href="@{/eliminarCausa/}+${causa.id}"
                            onclick="return confirm('Esta seguro que desea eliminar esta causa?');"><i

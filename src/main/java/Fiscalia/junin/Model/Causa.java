@@ -26,6 +26,7 @@ public class Causa {
     @NotEmpty
      private String contexto;
 
+
     @NotNull
     @Column(name = "create_at")
     @Temporal(TemporalType.DATE)

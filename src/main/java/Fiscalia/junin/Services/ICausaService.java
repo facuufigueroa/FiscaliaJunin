@@ -15,4 +15,7 @@ public interface ICausaService{
     public List<Causa> findByVictimario(String victimario);
     public List<Causa> findByNumExpediente(String numExpediente);
 
+    public Causa update(Causa causa);
+    public Causa getCausa(Long id);
+
 }

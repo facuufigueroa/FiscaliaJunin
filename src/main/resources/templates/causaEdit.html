@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar causa</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>
+<body style="background: #333333">
+<div class="container py-5 h-100">
+    <div class="card shadow-8   -strong" style="border-radius: 4rem;">
+        <div class="card-body p-5 text-center">
+            <h1 >Editar causa</h1>
+                <form action="#" th:action="@{/update}" th:object="${causa}" method="post">
+
+                    <input type="hidden" th:value="${causa.id}" th:attr="name='id'"/>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción:</label>
+                        <input id="descripcion" type="text" th:field="*{contexto}"/>
+                    </div>
+
+                    <label>Estado de la causa:</label>
+                    <div class="form-group">
+
+                    </div>
+
+                    </br>
+
+                    <button type="submit" class="btn btn-primary" name="newCausa">Modificar</button>
+                    <h1><a class="btn btn-info" th:href="@{/causas}">Volver</a></h1>
+                </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

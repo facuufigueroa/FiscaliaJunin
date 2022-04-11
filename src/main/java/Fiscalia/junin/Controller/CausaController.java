@@ -146,7 +146,7 @@ public class CausaController {
     }
 
 
-    @PostMapping("/detalle")
+   @PostMapping("/detalle")
     public String guardarDescripcion(@ModelAttribute Causa causa, BindingResult result, Model model,
                                      RedirectAttributes flash) {
 
@@ -159,6 +159,49 @@ public class CausaController {
         flash.addFlashAttribute("success", "Se ha actualizado correctamente la descripción de la causa con numero de expediente: " + causa1.getNumExpediente());
         return "redirect:/causas";
     }
+
+    /*-------------------------------------------------------------------------------------------*/
+
+
+
+
+    @GetMapping("/edit/{id}")
+    public String causaEdit(@PathVariable("id") Long causaId, Model model){
+        Causa causa = causaService.getCausa(causaId);
+        model.addAttribute("causa",causa);
+        return "detalle";
+    }
+    @PostMapping("/causas/update")
+    public String update(@ModelAttribute Causa causa){
+        causaService.update(causa);
+
+        return "redirect:/causas";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*--------------------------------------------------------------------------------------------------------*/
+
 
 
 

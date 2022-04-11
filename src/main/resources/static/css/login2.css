@@ -62,7 +62,7 @@ body:before {
     /*background: transparent;*/
     outline: none;
     height: 40px;
-    color: #fff;
+    color: #0c0808;
     font-size: 20px;
 }
 .contact-form input[type=submit] {

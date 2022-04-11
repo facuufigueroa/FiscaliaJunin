@@ -40,7 +40,7 @@ public class ExportarPdf {
         cell.setPhrase(new Phrase("Victima",font));
         tablaCausas.addCell(cell);
 
-        cell.setPhrase(new Phrase("Victimario",font));
+        cell.setPhrase(new Phrase("Imputado",font));
         tablaCausas.addCell(cell);
 
         cell.setPhrase(new Phrase("Fecha", font));

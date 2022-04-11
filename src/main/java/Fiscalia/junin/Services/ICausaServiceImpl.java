@@ -49,5 +49,19 @@ public class ICausaServiceImpl implements ICausaService{
         return causaRepository.findByNumExpediente(numExpediente);
     }
 
+    @Override
+    public Causa update(Causa causa) {
+        Causa cDB = causaRepository.findById(causa.getId()).get();
+        cDB.setContexto(causa.getContexto());
+        //cDB.setEstado(causa.getEstado());
+        return causaRepository.save(cDB);
+    }
+
+    @Override
+    public Causa getCausa(Long id) {
+        return  causaRepository.findById(id).get();
+    }
+
+
 
 }
