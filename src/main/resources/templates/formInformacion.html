@@ -26,7 +26,7 @@
                     Regresar</a>
             </h4>
             <h4>
-                <a class="btn btn-light btn-x btnAgregarFormI" th:href="@{/eleccionInformacion/}+${causaSession.getId()}"><i class="fa-solid fa-circle-plus"></i>  Agregar </a>
+                <a class="btn btn-light btn-x btnAgregarFormI" th:href="@{/eleccionInformacion/}+${causaSession.getId()}" th:if="${causaSession.estado}" ><i class="fa-solid fa-circle-plus"></i>  Agregar </a>
             </h4>
         </div>
 

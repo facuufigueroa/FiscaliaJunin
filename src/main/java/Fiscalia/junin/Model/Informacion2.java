@@ -10,12 +10,22 @@ public class Informacion2 implements Comparable<Informacion2> {
 
     private Date fecha;
 
+    private String descripcion;
 
 
-    public Informacion2(String tipoInformacion, Date fecha, Long id) {
+    public Informacion2(String tipoInformacion, Date fecha, Long id, String descripcion) {
         this.tipoInformacion = tipoInformacion;
         this.fecha = fecha;
         this.id=id;
+        this.descripcion=descripcion;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getTipoInformacion() {

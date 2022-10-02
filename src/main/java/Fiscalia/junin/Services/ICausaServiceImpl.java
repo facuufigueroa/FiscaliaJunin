@@ -53,7 +53,7 @@ public class ICausaServiceImpl implements ICausaService{
     public Causa update(Causa causa) {
         Causa cDB = causaRepository.findById(causa.getId()).get();
         cDB.setContexto(causa.getContexto());
-        //cDB.setEstado(causa.getEstado());
+        cDB.setEstado(causa.getEstado());
         return causaRepository.save(cDB);
     }
 

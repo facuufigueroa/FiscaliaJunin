@@ -111,7 +111,7 @@ public class CausaController {
         //ordenarMap();
         Collections.sort(informacionLista,Collections.reverseOrder());
         model.addAttribute("infoSession",informacionLista);
-        model.addAttribute("causaSession",causa1); //no es variable de sesion
+        model.addAttribute("causaSession",causa1); //no es variable de session
 
         return "formHistorialCausa";
 
@@ -128,6 +128,8 @@ public class CausaController {
         }
         model.addAttribute("causaSession", causa);
         model.addAttribute("titulo", "Seleccione tipo de informacion");
+
+
         return "eleccionInformacion";
     }
 
@@ -179,28 +181,6 @@ public class CausaController {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*--------------------------------------------------------------------------------------------------------*/
 
 
 
@@ -354,7 +334,7 @@ public class CausaController {
 
         for (Informacion i : info) {
             if(i.getEsLlamada()){
-                  informacionLista.add(new Informacion2("LLamada Telefonica",i.getFecha(),i.getId()));
+                  informacionLista.add(new Informacion2("LLamada Telefonica",i.getFecha(),i.getId(),i.getDescripcion()));
 
             }
 
@@ -365,7 +345,7 @@ public class CausaController {
 
         for(Informacion i : inf){
             if(i.getEsMovimiento()){
-                informacionLista.add(new Informacion2("Movimiento Bancario",i.getFecha(),i.getId()));
+                informacionLista.add(new Informacion2("Movimiento Bancario",i.getFecha(),i.getId(),i.getDescripcion()));
             }
 
         }
@@ -375,7 +355,7 @@ public class CausaController {
 
         for(Informacion i : inf){
             if(i.getEsRedSocial()){
-            informacionLista.add(new Informacion2("Red Social",i.getFecha(),i.getId()));
+            informacionLista.add(new Informacion2("Red Social",i.getFecha(),i.getId(), i.getDescripcion()));
             }
         }
     }

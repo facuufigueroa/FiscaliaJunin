@@ -34,6 +34,8 @@ public class ExportarPdf {
         font.setColor(Color.WHITE);
 
         cell.setBackgroundColor(Color.DARK_GRAY);
+
+
         cell.setPhrase(new Phrase("Numero de expediente",font));
         tablaCausas.addCell(cell);
 

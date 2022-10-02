@@ -11,10 +11,8 @@
 </html>
 
 
-
 <link rel="stylesheet" href="../static/css/login.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
 
 
 <body>
@@ -33,15 +31,16 @@
         <span style="--l: 'O!';">O!</span>
     </div-->
     <div class="card">
-    <figure>
-        <img src="imagenes/logo.png">
-    </figure>
+        <figure>
+            <img src="imagenes/logo.png">
+        </figure>
     </div>
 
-    <div th:if="${param.error}" class="alerta_error">Credenciales incorrectas</div><br>
-    <form sec:authorize="!isAuthenticated()"  method="post" th:action="@{/login}">
+    <div th:if="${param.error}" class="alerta_error">Credenciales incorrectas</div>
+    <br>
+    <form sec:authorize="!isAuthenticated()" method="post" th:action="@{/login}">
 
-        <p>Email</p><input class="input" placeholder="Ingrese su email"  name="username" type="text">
+        <p>Email</p><input class="input" placeholder="Ingrese su email" name="username" type="text">
         <p>Contraseña</p><input class="input" placeholder="Ingrese su contraseña" name="password" type="password">
         <input type="submit" value="Iniciar sesión">
     </form>
@@ -51,7 +50,7 @@
     </form>
 
     <div sec:authorize="isAuthenticated()" class="alert alert-success" role="alert" align="center">
-       Ya te encuentras logueado en el sistema!.<a th:href="@{/causas}" class="alert-link">Vuelva a las causas</a>
+        Ya te encuentras logueado en el sistema!.<a th:href="@{/causas}" class="alert-link">Vuelva a las causas</a>
     </div>
 
 </div>

@@ -7,55 +7,53 @@
 <header th:replace="/layout/layout :: header"></header>
 
 <div class="container py-5">
-  <div class="card bg-light border-4">
-    <div class="card-header" th:text="${titulo}"></div>
-    <div class="card-body">
+    <div class="card bg-light border-4">
+        <div class="card-header fontTitles"> Editar Descripcion y Estado de Causa</div>
+        <div class="card-body">
 
-      <form th:action="@{/causas/update}" th:object="${causa}" method="post">
-        <input type="hidden" th:value="${causa.id}" th:attr="name='id'">
-        <ul class="list-group my-2">
+            <form th:action="@{/causas/update}" th:object="${causa}" method="post">
+                <input type="hidden" th:value="${causa.id}" th:attr="name='id'">
+                <ul class="list-group my-2">
 
-          <li class="list-group-item list-group-item-primary" th:text="'Datos de la causa'"></li>
+                    <li class="list-group-item list-group-item-primary" th:text="'Datos de la causa'"></li>
 
-          <li class="list-group-item" th:text="'Numero de expediente: '+ ${causa.getNumExpediente()}"></li>
-          <li class="list-group-item" th:text="'Fecha: '+ ${#calendars.format(causa.getFecha2(),'dd/MM/yyyy')}"></li>
-          <li class="list-group-item" th:text="'Victima: '+ ${causa.getVictima()}"></li>
-          <li class="list-group-item" th:text="'Victimario: '+ ${causa.getVictimario()}"></li>
-        </ul>
+                    <li class="list-group-item" th:text="'Numero de expediente: '+ ${causa.getNumExpediente()}"></li>
+                    <li class="list-group-item"
+                        th:text="'Fecha: '+ ${#calendars.format(causa.getFecha2(),'dd/MM/yyyy')}"></li>
+                    <li class="list-group-item" th:text="'Victima: '+ ${causa.getVictima()}"></li>
+                    <li class="list-group-item" th:text="'Victimario: '+ ${causa.getVictimario()}"></li>
+                </ul>
+                <label>Estado de la causa:</label>
+                <div class="form-group">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="habilitado" name="habilitado" class="custom-control-input" value="1"
+                               th:field="*{estado}">
+                        <label class="custom-control-label" for="habilitado">Abierta</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="deshabilitado" name="deshabilitado" class="custom-control-input"
+                               value="0" th:field="*{estado}">
+                        <label class="custom-control-label" for="deshabilitado">Cerrada</label>
+                    </div>
+                </div>
 
-        <label>Estado de la causa:</label>
-        <div class="form-group">
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="habilitado" name="habilitado" class="custom-control-input" value="1" >
-            <label class="custom-control-label" for="habilitado">Abierta</label>
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="deshabilitado" name="deshabilitado" class="custom-control-input" value="0" >
-            <label class="custom-control-label" for="deshabilitado">Cerrada</label>
-          </div>
+
+                <label>Descripción:</label>
+                <textarea th:field="*{contexto}" class="form-control"
+                          th:errorclass="'form-control alert-danger'" placeholder="Ingrese descripcion"></textarea>
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('contexto')}"
+                       th:errors="*{contexto}"></small>
+                <br></br>
+                <button type="submit" class="btn btn-primary py-2" name="newCausa">Modificar</button>
+                <button type="submit" class="btn btn-primary py-2" th:href="@{/causas}">Regresar</button>
+
+
+            </form>
         </div>
 
-
-
-        <label>Descripción:</label>
-        <div class="form-group row">
-          <div class="col-sm-6">
-            <textarea th:field="*{contexto}" class="form-control"
-                      th:errorclass="'form-control alert-danger'" placeholder="Ingrese descripcion"></textarea>
-            <small class="form-text text-danger" th:if="${#fields.hasErrors('contexto')}"
-                   th:errors="*{contexto}"></small>
-          </div>
-        </div>
-
-        <button type="submit" class="btn btn-primary" name="newCausa">Modificar</button>
-        <h1><a class="btn btn-info" th:href="@{/causas}">Volver</a></h1>
-
-
-
-
-      </form>
     </div>
-  </div>
+
+
 </div>
 
 <footer th:replace="/layout/layout :: footer"></footer>
