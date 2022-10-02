@@ -1,8 +1,62 @@
-header {
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(https://fondosmil.com/fondo/51688.jpg);
-    height: 100vh;
+.email{
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 17px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+
+}
+
+.formgroup{
+    margin-left: 315px;
+    padding-right: 20rem !important;
+    padding-left: 20rem !important;
+    margin-top: 200px;
+
+}
+
+
+.card{
+   /* background: #274E6C;*/
+    background-color: rgb(21, 44, 61);
+    /*opacity: .1;*/
+    width: 130%!important;
+  }
+
+
+.cc{
+    /*margin-left: 10rem!important;*/
+    margin:auto;
+
+    margin-block-end: 2rem;
+}
+
+.table {
+    border-spacing: 15px;
+    text-align: center !important;
+}
+
+
+body{
+    /* background: #274E6C;*/
+    background: url(https://fondosmil.com/fondo/72669.jpg);
+    height: 80vh;
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center center;
     position: relative;
+
 }
+
+.fontTitles{
+    font-family: "Arial Black";
+    font-size: 1.8rem;
+    color: white;
+}
+
+.fontInput{
+    font-size: 1.1rem;
+}
+

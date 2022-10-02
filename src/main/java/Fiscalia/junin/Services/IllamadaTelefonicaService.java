@@ -7,4 +7,5 @@ public interface IllamadaTelefonicaService {
 
     public void save(LlamadaTelefonica llamadaTelefonica);
     public LlamadaTelefonica findById(Long id);
+    public void delete(Long id);
 }

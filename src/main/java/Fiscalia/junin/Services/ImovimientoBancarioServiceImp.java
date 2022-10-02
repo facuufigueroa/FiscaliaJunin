@@ -23,4 +23,9 @@ public class ImovimientoBancarioServiceImp implements ImovimientoBancarioService
         return imovimientoBancarioRepository.findById(id).orElse(null);
     }
 
+    @Override
+    public void delete(Long id) {
+        imovimientoBancarioRepository.deleteById(id);
+    }
+
 }

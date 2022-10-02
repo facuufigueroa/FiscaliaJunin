@@ -24,5 +24,9 @@ public class IredSocialServiceImp implements IredSocialService{
         return iredSocialRepository.findById(id).orElse(null);
     }
 
+    @Override
+    public void delete(Long id) {
+        iredSocialRepository.deleteById(id);
+    }
 
 }

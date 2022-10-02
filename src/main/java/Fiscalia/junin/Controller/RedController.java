@@ -32,4 +32,16 @@ public class RedController {
 
 
 
+
+
+
+
+    @GetMapping("/eliminarRedSocial/{id}")
+    public String eliminarCausa(@PathVariable Long id, RedirectAttributes flash) {
+        redSocialService.delete(id);
+        flash.addFlashAttribute("success", "Red Social eliminada con éxito!");
+        return "redirect:/causas";
+    }
+
+
 }

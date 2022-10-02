@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +18,8 @@ public class Causa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Length(max = 14,min = 14,message = "Debe ingresar 14 digitos")
+    /*@Length(max = 41,min = 21,message = "Debe ingresar 40 digitos")*/
+    @Pattern(regexp = "^[P]{2}+[-]+[0-9]{2}+[-]+[0-9]{2}+[-]+[0-9]{6}+[-]+[0-9]{2}+[/]+[0]{2}$",message = "El formato es incorrecto ")
     private String numExpediente;
     @NotEmpty
     private String victima;
@@ -26,6 +28,9 @@ public class Causa {
     @NotEmpty
      private String contexto;
 
+    @Column(name="estado")
+    private Boolean estado;
+
     @NotNull
     @Column(name = "create_at")
     @Temporal(TemporalType.DATE)
@@ -33,7 +38,7 @@ public class Causa {
     private Date fecha2;
 
     public Causa() {
-
+        this.estado=true;
     }
 
     @OneToMany(mappedBy = "causa",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -48,7 +53,13 @@ public class Causa {
     }
 
 
+    public Boolean getEstado() {
+        return estado;
+    }
 
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
 
     public Long getId() {
         return id;

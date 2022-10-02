@@ -1,11 +1,13 @@
 package Fiscalia.junin.Controller;
 
 
+import Fiscalia.junin.ExportarPdf.ExportarPdf;
 import Fiscalia.junin.Model.*;
 import Fiscalia.junin.Services.ICausaService;
 import Fiscalia.junin.Services.IllamadaTelefonicaService;
 import Fiscalia.junin.Services.ImovimientoBancarioService;
 import Fiscalia.junin.Services.IredSocialService;
+import com.lowagie.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +15,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller
@@ -45,7 +51,7 @@ public class CausaController {
 
         List<Causa> causas = causaService.findAllByDesc();
 
-        model.addAttribute("titulo", "Listado de causas");
+        model.addAttribute("titulo", "LISTADO DE CAUSAS");
         model.addAttribute("causas", causas);
         model.addAttribute("causa1",new Causa());
         return "/causas";
@@ -84,6 +90,7 @@ public class CausaController {
 
         //ordenarMap();
         Collections.sort(informacionLista,Collections.reverseOrder());
+
         model.addAttribute("infoSession",informacionLista);
         model.addAttribute("causaSession",causa1);
 
@@ -104,7 +111,7 @@ public class CausaController {
         //ordenarMap();
         Collections.sort(informacionLista,Collections.reverseOrder());
         model.addAttribute("infoSession",informacionLista);
-        model.addAttribute("causaSession",causa1);
+        model.addAttribute("causaSession",causa1); //no es variable de session
 
         return "formHistorialCausa";
 
@@ -121,6 +128,8 @@ public class CausaController {
         }
         model.addAttribute("causaSession", causa);
         model.addAttribute("titulo", "Seleccione tipo de informacion");
+
+
         return "eleccionInformacion";
     }
 
@@ -139,7 +148,7 @@ public class CausaController {
     }
 
 
-    @PostMapping("/detalle")
+   @PostMapping("/detalle")
     public String guardarDescripcion(@ModelAttribute Causa causa, BindingResult result, Model model,
                                      RedirectAttributes flash) {
 
@@ -152,6 +161,29 @@ public class CausaController {
         flash.addFlashAttribute("success", "Se ha actualizado correctamente la descripción de la causa con numero de expediente: " + causa1.getNumExpediente());
         return "redirect:/causas";
     }
+
+    /*-------------------------------------------------------------------------------------------*/
+
+
+
+
+    @GetMapping("/edit/{id}")
+    public String causaEdit(@PathVariable("id") Long causaId, Model model){
+        Causa causa = causaService.getCausa(causaId);
+        model.addAttribute("causa",causa);
+        return "detalle";
+    }
+    @PostMapping("/causas/update")
+    public String update(@ModelAttribute Causa causa){
+        causaService.update(causa);
+
+        return "redirect:/causas";
+    }
+
+
+
+
+
 
 
     @GetMapping("/eliminarCausa/{id}")
@@ -302,8 +334,7 @@ public class CausaController {
 
         for (Informacion i : info) {
             if(i.getEsLlamada()){
-                System.out.println("ID DE LA LLAMDA" + i.getId());
-                informacionLista.add(new Informacion2("LLamada Telefonica",i.getFecha(),i.getId()));
+                  informacionLista.add(new Informacion2("LLamada Telefonica",i.getFecha(),i.getId(),i.getDescripcion()));
 
             }
 
@@ -314,7 +345,7 @@ public class CausaController {
 
         for(Informacion i : inf){
             if(i.getEsMovimiento()){
-                informacionLista.add(new Informacion2("Movimiento Bancario",i.getFecha(),i.getId()));
+                informacionLista.add(new Informacion2("Movimiento Bancario",i.getFecha(),i.getId(),i.getDescripcion()));
             }
 
         }
@@ -324,7 +355,7 @@ public class CausaController {
 
         for(Informacion i : inf){
             if(i.getEsRedSocial()){
-            informacionLista.add(new Informacion2("Red Social",i.getFecha(),i.getId()));
+            informacionLista.add(new Informacion2("Red Social",i.getFecha(),i.getId(), i.getDescripcion()));
             }
         }
     }
@@ -350,9 +381,23 @@ public class CausaController {
 
 
 
+    @GetMapping("/causas/export/pdf")
+    public void exportPdf (HttpServletResponse response) throws DocumentException, IOException{
+        response.setContentType("application/pdf");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
 
 
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=causas_" + currentDateTime + ".pdf";
 
+        response.setHeader(headerKey,headerValue);
+        List<Causa> causas = causaService.findAllByDesc();
+
+        ExportarPdf exportarPdf = new ExportarPdf(causas);
+        exportarPdf.export(response);
+
+    }
 
 
 

@@ -23,4 +23,7 @@ public interface CausaRepository extends JpaRepository<Causa,Long> {
     /*Buscar causas por numero de expediente*/
     public List<Causa> findByNumExpediente(String numExpediente);
 
+
+
+
 }

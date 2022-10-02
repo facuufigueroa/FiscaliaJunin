@@ -26,4 +26,14 @@ public class MovBancarioController {
         return "detalleMovimientoB";
     }
 
+
+    @GetMapping("/eliminarMovBancario/{id}")
+    public String eliminarCausa(@PathVariable Long id, RedirectAttributes flash) {
+        movimientoBancarioService.delete(id);
+        flash.addFlashAttribute("success", "Movimiento Bancario eliminado con éxito!");
+        return "redirect:/causas";
+    }
+
+
+
 }

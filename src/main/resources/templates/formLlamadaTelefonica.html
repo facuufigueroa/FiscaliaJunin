@@ -23,8 +23,9 @@
                 <label>Numero de origen:</label>
                 <div class="form-group row">
                     <div class="col-sm-6">
-                        <input  oninput="this.value=this.value.slice(0,this.maxLength)" maxlength="10" type="number" th:field="*{numeroEmisor}" class="form-control" placeholder="Numero de origen"
-                                th:errorclass="'form-control alert-danger'">
+                        <input oninput="this.value=this.value.slice(0,this.maxLength)" maxlength="10" type="number"
+                               th:field="*{numeroEmisor}" class="form-control" placeholder="Numero de origen"
+                               th:errorclass="'form-control alert-danger'">
                         <small class="form-text text-danger" th:if="${#fields.hasErrors('numeroEmisor')}"
                                th:errors="*{numeroEmisor}"></small>
                     </div>
@@ -32,8 +33,9 @@
                 <label>Numero de destino:</label>
                 <div class="form-group row">
                     <div class="col-sm-6">
-                        <input  oninput="this.value=this.value.slice(0,this.maxLength)" maxlength="10" type="number" th:field="*{numeroReceptor}" class="form-control" placeholder="Numero de destino"
-                                th:errorclass="'form-control alert-danger'">
+                        <input oninput="this.value=this.value.slice(0,this.maxLength)" maxlength="10" type="number"
+                               th:field="*{numeroReceptor}" class="form-control" placeholder="Numero de destino"
+                               th:errorclass="'form-control alert-danger'">
                         <small class="form-text text-danger" th:if="${#fields.hasErrors('numeroReceptor')}"
                                th:errors="*{numeroReceptor}"></small>
                     </div>
@@ -41,8 +43,9 @@
                 <label>Duracion: </label>
                 <div class="form-group row">
                     <div class="col-sm-6">
-                        <input  oninput="this.value=this.value.slice(0,this.maxLength)" maxlength="9"  type="number" th:field="*{duracion}" class="form-control"
-                                th:errorclass="'form-control alert-danger'" placeholder="Ingrese duracion en minutos"/>
+                        <input oninput="this.value=this.value.slice(0,this.maxLength)" maxlength="9" type="number"
+                               th:field="*{duracion}" class="form-control"
+                               th:errorclass="'form-control alert-danger'" placeholder="Ingrese duracion en minutos"/>
                         <small class="form-text text-danger" th:if="${#fields.hasErrors('duracion')}"
                                th:errors="*{duracion}"></small>
                     </div>
@@ -61,8 +64,8 @@
                 <label>Fecha: </label>
                 <div class="form-group row">
                     <div class="col-sm-6">
-                        <input   type="text" th:field="*{fecha}" class="form-control"
-                                 th:errorclass="'form-control alert-danger'" placeholder="dd/MM/yyyy"/>
+                        <input type="text" th:field="*{fecha}" class="form-control"
+                               th:errorclass="'form-control alert-danger'" placeholder="dd/MM/yyyy"/>
                         <small class="form-text text-danger" th:if="${#fields.hasErrors('fecha')}"
                                th:errors="*{fecha}"></small>
                     </div>

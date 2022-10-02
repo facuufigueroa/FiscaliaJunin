@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class IllamadaTelefonicaServiceImp implements IllamadaTelefonicaService{
+public class IllamadaTelefonicaServiceImp implements IllamadaTelefonicaService {
 
     @Autowired
     private llamadaTelefonicaRepository llamadaTelefonicaRepository;
@@ -16,8 +16,16 @@ public class IllamadaTelefonicaServiceImp implements IllamadaTelefonicaService{
     public void save(LlamadaTelefonica llamadaTelefonica) {
         llamadaTelefonicaRepository.save(llamadaTelefonica);
     }
+
     @Override
     public LlamadaTelefonica findById(Long id) {
         return llamadaTelefonicaRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public void delete(Long id) {
+        llamadaTelefonicaRepository.deleteById(id);
+    }
 }
+
+

@@ -10,6 +10,11 @@
     <div class="card bg-light border-4">
         <h4>Movimiento Bancario</h4>
         <div class="card-body">
+            <h4 class="card-title">
+                <a th:href="@{/formHistorialCausa/}+${movBancario.causa.id}" class="btn btn-light btn-xs">
+                    <i class="fa-solid fa-backward"></i>
+                    Regresar</a>
+            </h4>
 
 
             <form th:action="@{/detalleMovimientoB}" th:object="${movBancario}" method="post">
